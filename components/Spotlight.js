@@ -64,7 +64,7 @@ function Spotlight() {
                         </button>
                     </a>
                 </div>
-                <p>&copy; {new Date().getFullYear()} Tourist Guide.</p>
+                <p>&copy; {new Date().getFullYear()} Tour Guide.</p>
             </div>
         </div>
     )
