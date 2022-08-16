@@ -39,6 +39,12 @@ a {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
   }
+  
+  .list-group-item{
+    &:hover{
+      cursor: pointer;
+    }
+  }
 
   .info{
     position: absolute;

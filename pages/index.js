@@ -15,10 +15,10 @@ function Home({posts}) {
 
     return (
         <>
-            <Navbar setSearchResults={setSearchResults} setIsLoading={setIsLoading}/>
+            <Navbar setSearchResults={setSearchResults} setIsLoading={setIsLoading} />
             <div className="container">
                 <div className="row">
-                    <Spotlight/>
+                    <Spotlight setSearchResults={setSearchResults} setIsLoading={setIsLoading} />
                     <Feed posts={searchResults} isLoading={isLoading}/>
                 </div>
             </div>

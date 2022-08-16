@@ -16,7 +16,7 @@ function Feed({posts, isLoading}) {
     }
 
     const renderPosts = () => {
-        if (posts) {
+        if (posts.length>0) {
             return posts.map(
                 post => {
                     const {
@@ -29,9 +29,11 @@ function Feed({posts, isLoading}) {
                         latitude,
                         longitude
                     } = post.result_object
+
+                    const caption = post.review_snippet ? post.review_snippet.snippet : ""
                     return (
                         <Post key={location_id} name={name} address={address} photo={photo.images.original.url}
-                              caption={post.review_snippet.snippet} rating={rating} reviews={num_reviews}
+                              caption={caption} rating={rating} reviews={num_reviews}
                               latitude={latitude} longitude={longitude}/>
                     )
                 }
@@ -39,7 +41,7 @@ function Feed({posts, isLoading}) {
         } else{
             return (
                 <div className="alternate">
-                    Nothing found, please try a different search term e.g. europe
+                    Nothing found, please try a different search term e.g. Europe, Australia, Tokyo
                 </div>
             )
         }
