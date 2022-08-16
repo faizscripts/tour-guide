@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Spotlight from "../components/Spotlight";
@@ -7,14 +7,19 @@ import Feed from "../components/Feed";
 function Home({posts}) {
 
     const [searchResults, setSearchResults] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        setSearchResults(posts)
+    }, [])
 
     return (
         <>
-            <Navbar/>
+            <Navbar setSearchResults={setSearchResults} setIsLoading={setIsLoading}/>
             <div className="container">
                 <div className="row">
                     <Spotlight/>
-                    <Feed posts={posts}/>
+                    <Feed posts={searchResults} isLoading={isLoading}/>
                 </div>
             </div>
         </>

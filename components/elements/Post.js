@@ -1,6 +1,21 @@
 import Image from "next/image";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faStar} from "@fortawesome/free-solid-svg-icons";
 
-function Post({name, address, photo, caption, rating, reviews}) {
+function Post({name, address, photo, caption, rating, reviews, latitude, longitude}) {
+
+    const renderRating = () => {
+        return [1, 2, 3, 4, 5].map(
+            loop => {
+                if (parseInt(rating) <= loop) {
+                    return <FontAwesomeIcon icon={faStar} className="star-yellow" key={loop}/>
+                } else return <FontAwesomeIcon icon={faStar} className="star-grey" key={loop}/>
+            }
+        ).reverse()
+    }
+
+    const directionsUrl = `https://maps.google.com/maps?q=${latitude},${longitude}`
+
     return (
         <div className="card">
             <div className="card-body">
@@ -12,9 +27,9 @@ function Post({name, address, photo, caption, rating, reviews}) {
                 <p className="card-text">
                     {caption}
                     <br/>
-                    {rating} ({reviews})
+                    {renderRating()} ({reviews} reviews)
                     <br/>
-                    <a href="#">Get Directions</a>
+                    <a href={directionsUrl} target="_blank" rel="noreferrer"> Get directions </a>
                 </p>
             </div>
         </div>

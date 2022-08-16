@@ -1,14 +1,19 @@
 import {useState} from "react";
 import Image from "next/image";
 import logo from "../public/images/logo.webp"
+import axios from "axios";
 
-function Navbar() {
+function Navbar({setSearchResults, setIsLoading}) {
 
     const [term, setTerm] = useState("")
 
-    const onFormSubmit = (event) => {
+    const onFormSubmit = async (event) => {
         event.preventDefault()
-
+        setIsLoading(true)
+        const raw = await axios.post('/api/search', {term})
+        const response = raw.data.data.filter(post => post.result_type === "things_to_do")
+        setIsLoading(false)
+        setSearchResults(response)
     }
 
     return (
