@@ -1,4 +1,6 @@
-An information interface for tourist implemented using Next JS and Travel Advisor API
+An information interface for tourist implemented using Next JS and Travel Advisor API. 
+
+[Live demo](https://tourguide.faizscripts.com/) which I have deployed using linode.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
